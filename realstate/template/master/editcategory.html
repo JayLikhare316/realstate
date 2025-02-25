@@ -1,0 +1,37 @@
+{% extends "master/masterbase.html" %}
+{% load static %}
+
+{% block content %}
+
+      <div class="container-fluid">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold mb-4">Edit Category</h5>
+              <div class="card">
+                <div class="card-body">
+                  <form action="{% url 'editcategory' obj.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Category Name</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{obj.name}}" name="name">
+                    </div>
+                    <div>
+                        <select class="form-select" name="is_active">
+                          <option value="1">Active</option>
+                          <option value="0">Inactive</option>
+                        </select>
+                      </div>
+                      <br>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+              </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
