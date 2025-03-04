@@ -2,5 +2,6 @@ services:
   web:
     build:
       context: .
-      ports:
-        - "8000:8000"
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
