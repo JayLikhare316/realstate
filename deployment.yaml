@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: realstate-web
+  labels:
+    app: realstate-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: realstate-web
+  template:
+    metadata:
+      labels:
+        app: realstate-web
+    spec:
+      containers:
+      - name: realstate-web
+        image: jaylikhare/realstate-web:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DEBUG
+          value: "False"
+        - name: ALLOWED_HOSTS
+          value: "*"
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
